@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Pas de réécriture sur les vrais fichiers
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .? - [L]
+
+# Réécrit à index.php, en passant le reste de l'URL (path) en paramètre p
+# Les paramètres d'URL ne sont pas inclus
+RewriteRule (.+) index.php?p=/$1 [L,QSA]
